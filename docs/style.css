@@ -6,6 +6,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     color: #333;
+    background-color: white;
 }
 
 .logo {
@@ -33,4 +34,25 @@ body {
 
 .btn.secondary {
     background: #6c757d;
+}
+
+.header div{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header div img{
+    width: 100px;
+    margin: 0px 30px 0px 0px;
+}
+
+.doc{
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
