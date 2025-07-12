@@ -89,3 +89,32 @@ footer {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: medium;
 }
+
+.code{
+    white-space: pre-wrap;
+    background-color: #04040e;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+
+}
+
+.keyword{
+    color: #4d84f4;
+    font-weight: bold;
+}
+
+.operator{
+    color: #ac4545;
+    font-weight: bold;
+}
+
+.number{
+    color: #67e38c;
+    font-weight: bold;
+}
+
+.string{
+    color: #f3aae9;
+    font-weight: bold;
+}
