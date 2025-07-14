@@ -99,7 +99,7 @@ header h1{
 }
 
 @keyframes textshadow {
-    0%{
+    0%,100%{
         text-shadow: 4px 2px 5px #4f4f4f;
     }
     50%{
