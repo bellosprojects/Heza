@@ -1,98 +1,46 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const codeDivs = document.querySelectorAll('div.code');
-    const keywords = ['data', 'out', 'in', 'trace', 'block', 'loop','as', 'insert', 'default','end'];
-    
-    // Orden de importancia: strings primero, luego otros patrones
-    const syntaxRules = [
-        {
-            name: 'string',
-            regex: /"(?:\\.|[^"\\])*"/g,
-        },
-        {
-            name: 'operator',
-            // Operadores mejorados para capturar aquellos después de números
-            regex: /(->|\?|[:+\-*/%=!<>^&|~]+)/g,
-            color: 'red'
-        },
-        {
-            name: 'number',
-            // Números con posibles operadores inmediatamente después
-            regex: /\b\d+(?:\.\d+)?(?![\w])/g,
-            color: 'green'
-        },
-        {
-            name: 'keyword',
-            regex: new RegExp(`\\b(${keywords.join('|')})\\b`, 'g'),
-        }
-    ];
+document.addEventListener("DOMContentLoaded", () => {
+      const textarea = document.querySelector(".code");
+      const preview  = document.querySelector(".preview");
 
-    function highlightSyntax(text) {
-        // Array para guardar las partes del texto
-        const fragments = [{ text, type: null }];
-        
-        syntaxRules.forEach(rule => {
-            fragments.forEach((fragment, index) => {
-                if (fragment.type !== null) return;
-                
-                const parts = [];
-                let lastIndex = 0;
-                let match;
-                
-                const regex = new RegExp(rule.regex.source, rule.regex.flags + (rule.regex.global ? '' : 'g'));
-                
-                while ((match = regex.exec(fragment.text)) !== null) {
-                    // Texto antes del match
-                    if (match.index > lastIndex) {
-                        parts.push({
-                            text: fragment.text.substring(lastIndex, match.index),
-                            type: null
-                        });
-                    }
-                    
-                    // El match
-                    parts.push({
-                        text: match[0],
-                        type: rule.name
-                    });
-                    
-                    lastIndex = match.index + match[0].length;
-                    
-                    // Si la regex no es global, salir después del primer match
-                    if (!rule.regex.global) break;
-                }
-                
-                // Texto restante
-                if (lastIndex < fragment.text.length) {
-                    parts.push({
-                        text: fragment.text.substring(lastIndex),
-                        type: null
-                    });
-                }
-                
-                // Reemplazar el fragmento actual con las partes divididas
-                if (parts.length > 1) {
-                    fragments.splice(index, 1, ...parts);
-                }
-            });
-        });
-        
-        // Construir el HTML con los spans
-        let html = '';
-        fragments.forEach(fragment => {
-            if (fragment.type) {
-                const rule = syntaxRules.find(r => r.name === fragment.type);
-                html += `<span class="${rule.name}">${fragment.text}</span>`;
-            } else {
-                html += fragment.text;
-            }
-        });
-        
-        return html;
-    }
+      const keywords  = ["data", "trace", "out", "in", "loop", "end", "block", "as", "CLS", "default?", "condition"];
+      const constants = ["LINE", "TAB", "ESP", "PI", "E"];
+      const ops       = ["->", "\\+", "-", "\\*", "/", "%", "\\^", "=", ">=", "<=", ">", "<", ":", "\\?", "not", "and", "or"];
 
-    codeDivs.forEach(div => {
-        // Guardar el texto original para evitar problemas con entidades HTML
-        const originalText = div.textContent;
-        div.innerHTML = highlightSyntax(originalText);
+      function escapeHtml(s) {
+        return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      }
+
+      function highlight(code) {
+  // Escapamos primero
+  let out = code
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;");
+
+  // Aplicamos resaltado sobre texto plano y escapado
+// Comentarios: buscar '@' ya escapado como '&#64;'
+    out = out.replace(/&#64;[^\n\r]*/g, m => `<span class="comment">${m}</span>`);
+  out = out.replace(/"([^"\\]|\\.)*"/g, m => `<span class="string">${m}</span>`);
+  out = out.replace(/\b\d+(\.\d+)?\b/g, m => `<span class="number">${m}</span>`);
+
+  [...keywords, ...constants].forEach(word => {
+    out = out.replace(new RegExp(`\\b${word}\\b`, "g"), m => `<span class="keyword">${m}</span>`);
+  });
+
+  // Procesamos operadores con cuidado
+  ops.sort((a,b) => b.length - a.length).forEach(op => {
+    const pattern = new RegExp(`\\b${op}\\b`, "g"); // No coincide con <> porque ya están escapados
+    out = out.replace(pattern, m => `<span class="operator">${m}</span>`);
+  });
+
+  return out;
+}
+
+
+      function update() {
+        preview.innerHTML = highlight(textarea.value);
+      }
+
+      textarea.addEventListener("input", update);
+      update();
     });
-});

@@ -1,75 +1,286 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heza Language</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="favicon" href="HezaLogo.ico">
-    <link rel="shortcut icon" href="HezaLogo.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <title>Heza Languaje</title>
+  <link rel="stylesheet" href="highlight.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="HezaLogo.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="menu">
-        <p>Bello's Projects</p>
+
+    <nav class="indice">
+      <a href="#seccion1">Informacion</a>
+      <a href="#seccion2">Documentacion</a>
+      <a href="#seccion3">Uso</a>
+      <a href="#seccion4">Herramientas</a>
+    </nav>
+
+    <div class="up">
+
+      <div class="fondo"></div>
+
+      <div class="cilindro">
+        <header>
+          <img src="HezaLogo.ico" alt="HezaLogo">
+          <section class="section">
+            <h1>Heza Languaje</h1>
+            <p>Programar nunca fue tan sencillo</p>
+          </section>
+        </header>
+      </div>
+      
+      <div class="menu">
+        <img src="Bello's Projects Logo.png" alt="BellosProjects Logo">
+        <h2>Bello's Projects</h2>
+      </div>
     </div>
-    <div class ="header">
-        <div>
-            <img src="HezaLogo.ico" alt="Heza Logo" class="logo">
-            <h1>Heza Language</h1>
-        </div>
-        <hr>
-        <p>Lenguaje educativo interpretado para aprender a programar</p>
-        <hr>
-    </div>
+    
+    <section id="seccion1">
 
-    <section class="features">
-        <h2>Características</h2>
-        <div class="feature-card">
-            <h3>📝 Sintaxis simple</h3>
-            <p>Diseñada para aprender programación sin complicaciones.</p>
-            <div class="code">
-data x = 90
-            </div>
-        </div>
+      <h2>Informacion General</h2>
 
-        <div class="feature-card">
-            <h3>🚀 Intérprete rápido</h3>
-            <p>Ejecuta tu código al instante con un intérprete eficiente.</p>
-            <div class="code">data y = 10
- out -> "El resultado es: ", y + x
-</div>
-        </div>
+      <div class="card">
+        <h3>¿Que és? </h3>
+        <p>Heza es un lenguaje de programacion interpretado no optimizado con fines completamente educativos, no se enfoca rutinas complejas ni minuciosas sino mas bien en algoritmos creativos. </p>
+      </div>
 
-        <div class="feature-card">
-            <h3>📚 Documentación completa</h3>
-            <p>Guías y ejemplos para ayudarte a comenzar rápidamente.</p>
-            <div class="code">out -> "¡Bienvenido a Heza!"</div>
-        </div>
+      <div class="card">
+        <h3>Enfoque</h3>
+        <p>Esta dirigido principalmente a la simplicidad de funciones geniales, y a su vez limitado a procesamientos detallados. Este enfoque hace que una tarea comun en otros lenguajes (como manipulacion de bits o memoria dinamica) sea imposible en Heza, pero tambien hace que tareas dificiles en bajo nivel (como un asistente activado por voz) sea algo trivial en Heza.</p>
+      </div>
 
-        <div class="feature-card">
-            <h3>Libreria de funciones geniales</h3>
-            <p>En Heza cuentas con un abanico de funciones geniales que facilitan el desarrollo, aqui puedes crear un aistente virtual activado por voz con poco trabajo, cosa que en otros lenguajes es una tarea compleja.</p>
-        </div>
-        
+      <div class="card">
+        <h3>Proyectos comunes</h3>
+        <p>
+          Entre muchos otros, estos son algunos de los algoritmos comunes que pueden realizarse con Heza
+          <ul>
+            <li>Traduccion</li>
+            <li>Calculadora interactiva</li>
+            <li>Asistente activado por voz</li>
+            <li>Multiplexor de variables</li>
+            <li>Animacion de texto</li>
+            <li>Juegos de Azar</li>
+          </ul>
+        </p>
+      </div>
     </section>
 
-    <section class="download">
-        <h2>¡Pruébalo ahora!</h2>
-        <a href="https://marketplace.visualstudio.com/items?itemName=BellosProjects.hezaextension" class="btn">
-            Instalar en VS Code
-        </a>
-        <a href="https://github.com/bellosprojects/Heza/releases/download/Heza/HezaSetup.exe" class="btn secondary">
-            Descargar Intérprete
-        </a>
+    <section  id="seccion2">
+
+      <h2>Documentacion</h2>
+
+      <div class="card">
+        <h3>Comentarios</h3>
+        <p>Para comentar el codigo se usa el simbolo @</p>
+        <div class="codigo">
+  <span class="comment">@Este es un comentario</span>
+
+  Este es texto normal
+        </div>
+        <p>Actualmente no hay soporte para comentarios multilinea</p>
+      </div>
+
+      <div class="card">
+        <h3>Palabras Clave</h3>
+        <p>Las palabras que le indican al interprete las instrucciones a ejecutar</p>
+        <div class="codigo">
+  <span class="keyword">data</span>       <span class="comment">@Declara variables</span>
+
+  <span class="keyword">trace</span>      <span class="comment">@Activa historial de cambios de variables</span>
+
+  <span class="keyword">out</span>        <span class="comment">@Salida por consola</span>
+
+  <span class="keyword">in</span>         <span class="comment">@Entrada de consola</span>
+
+  <span class="keyword">default</span>    <span class="comment">@Condicion por defecto</span>
+
+  <span class="keyword">block</span>      <span class="comment">@Declara funciones</span>
+
+  <span class="keyword">loop</span>       <span class="comment">@Inicializa bucles</span>
+
+  <span class="keyword">as</span>         <span class="comment">@Define alias para bloques de codigo</span>
+
+  <span class="keyword">end</span>        <span class="comment">@Termina el bloque de codigo de un alias</span>
+        </div>
+        <p>Hay que tener cuidado con la palabra reservada TRACE, ya que cuando se usa con el operador de referencia representa un valor y no una instruccion</p>
+      </div>
+
+      <div class="card">
+        <h3>Constantes</h3>
+        <p>Palabras que contienen valores utiles que no pueden ser reemplzados</p>
+        <div class="codigo">
+  <span class="operator">LINE</span>    <span class="comment">@Salto de linea (\n)</span>
+
+  <span class="operator">TAB</span>     <span class="comment">@Tabulacion (\t)</span>
+
+  <span class="operator">ESP</span>     <span class="comment">@Espacio en blanco (Este si puede ser reemplzado)</span>
+        </div>
+        <p>Por cuestiones del interprete, estos valores no se pueden reemplazar por su equivalente literal como en otros lenguajes y por eso se crearon las constantes de secuencia de escape</p>
+      </div>
+
+      <div class="card">
+        <h3>CLS</h3>
+        <p>La palabra CLS limpia la consola</p>
+        <div class="codigo">
+  <span class="operator">CLS</span>   <span class="comment">@Limpia la consola</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Valores</h3>
+        <p>En Heza existen 6 tipos de valores actualmente</p>
+        <ul>
+          <li>Enteros</li>
+          <li>Decimales</li>
+          <li>Strings</li>
+          <li>Booleanos</li>
+          <li>Constantes</li>
+          <li>Otras variables (ya declaradas)</li>
+        </ul>
+        <div class="codigo">
+  <span class="number">45</span>              <span class="comment">@Entero</span>
+
+  <span class="number">3.1415</span>          <span class="comment">@Decimal</span>
+
+  <span class="string">"Hello Wordl!"</span>  <span class="comment">@String</span>
+
+  <span class="operator">LINE</span>            <span class="comment">@Constante</span>
+
+  <span class="operator">false</span>           <span class="comment">@Booleano</span>
+
+  var             <span class="comment">@Variables</span>
+        </div>
+        <p>Todos los valores que no sean variables ya declaradas se consideran valores inmediatos, estos tienen la restriccion de que no se les puede aplicar metodos directamente</p>
+      </div>
+
+      <div class="card">
+        <h3>Operaciones aritmeticas (Numeros)</h3>
+        <p>En cuanto a las operaciones aritmeticas en Heza, existen 6 operaciones binarias y dos unarias, las cuales se ejecutan siguiendo la jerarquia de operadocion PEMDAS</p>
+        <div class="codigo">
+  <span class="comment">@Binarias</span>
+
+  a + b   <span class="comment">@Suma</span>
+
+  a - b   <span class="comment">@Resta</span>
+
+  a * b   <span class="comment">@Multiplicacion</span>
+
+  a / b   <span class="comment">@Division</span>
+
+  a % b   <span class="comment">@Mudulo</span>
+
+  a ^ b   <span class="comment">@Potencia</span>
+
+  <span class="comment">@Unarias</span>
+
+  -a      <span class="comment">@Numeros negativos</span>
+
+  +a      <span class="comment">@Numeros positivos con signo explicito</span>
+        </div>
+        <p>Estas operaciones son estrictamente para numeros, los string son manipulados mediante funciones integradas</p>
+      </div>
+
+      <div class="card">
+        <h3>Asignacion</h3>
+        <p>El operador de asignacion es el simbolo =, pero lo que destaca de la reasignacion en Heza es que se pueden reasignar multiples variables con multiples valores en una sola linea, lo cual es util pata swaps</p>
+        <div class="codigo">
+  x,y,z = y,z,x
+
+  a,b = <span class="number">34</span>,<span class="string">"Hola"</span>
+        </div>
+        <p>No hay ningun problema con hacer este tipo de operaciones ya que el interprete se encarga de hacer un respaldo previo de los valores antes de reasignarlos para evitar perder datos. Esto solo se puede hacer en reasignacion mas no en la declaracion de las variables</p>
+      </div>
+
+      <div class="card">
+        <h3>Operadores especiales</h3>
+        <p>Heza maneja 3 operadores especiales, cuyo uso es particular de aqui y tienen funciones importantes en el flujo y control</p>
+        <div class="codigo">
+  :   <span class="comment">@Operador de referenciacion (para TRACE y END)</span>
+
+  ->  <span class="comment">@Operador de flujo (para IN,OUT y retorno en funciones)</span>
+
+  ?   <span class="comment">@Operador de condicion (para bucles WHILE y condicionales)</span>
+        </div>
+        <p>Esto</p>
+      </div>
+
+      <div class="card">
+        <h3>Operadores de relacion</h3>
+        <p>Operadores que sirven para comparar valores</p>
+        <div class="codigo">
+  ==  <span class="comment">@Igual</span>
+
+  =!  <span class="comment">@Diferente</span>
+
+  >=  <span class="comment">@Mayor igual</span>
+
+  <=  <span class="comment">@Menor igual</span>
+
+  <  <span class="comment">@Menor estricto</span>
+
+  >  <span class="comment">@Mayor estricto</span>
+      </div>
+      <p>Estos operadores son binarios y los valores que lleven a los lados deben ser comparables</p>
+      </div>
+
+      <div class="card">
+        <h3>Operadores logicos</h3>
+        <p>Como en la mayoria de los lenguajes, en Heza existen 2 operadores binarios y un operador unario para expresiones logicas</p>
+        <div class="codigo">
+  <span class="comment">@Binarios</span>
+
+  and   <span class="comment">@Devuelve true si ambos operados son true</span>
+
+  or    <span class="comment">@Devuelve true si alguno de los operados es true</span>
+
+  <span class="comment">@Unario</span>
+
+  not   <span class="comment">@Niega la expresion psando de true a false y viceversa</span>
+  </div>
+        <p>Los valores que usan estos operadores deben ser booleanos, generalmente resultados de una comparacion</p>
+      </div>
+
     </section>
 
-    <section class="doc">
-        <h3>Documentación</h3>
-        <p>Descargar la documentacion completa de Heza <a href="https://github.com/bellosprojects/Heza/raw/main/Heza%20Documentacion.pdf">aqui</a></p>
+    <section  id="seccion3">
+      <h2>Como usar</h2>
+
+      <div class="card">
+        <h3>Instrucciones de uso</h3>
+        <p>
+          Descarga desde aqui la extension para Visual Studio Code, la cual te ayudara con el resaltado de sintaxis, los snippets y documentacion en vivo con hover tooltip, tambien incluye un boton en el menu llamado <span class="keyword">Run Heza</span> con el cual puedes ejecutar el codigo. Para que este boton funcione debes descargar el interprete e instalarlo, es muy sencillo! puedes obtener el enlace aqui en la Web o al descargar la extension. Tambien sera importante que descargues la documentacion en PDF para acceso offline por si tienes alguna duda sobre el lenguaje. Disfruta programando en Heza
+        </p>
+      </div>
+
+      
+      <div class="download">
+        <h3>📩 Descargas</h3>
+        <p>Descarga la extension, el Interprete y la documentacion oficiales de Heza aqui</p>
+        <div class="links">
+          <a href="https://marketplace.visualstudio.com/items?itemName=BellosProjects.hezaextension" class="btn">Descargar Extension</a>
+          <a href="https://github.com/bellosprojects/Heza/releases/download/Heza/HezaSetup.exe" class="btn2">Descargar Interprete</a>
+          <a href="https://github.com/bellosprojects/Heza/raw/main/Heza%20Documentacion.pdf" class="btn3">Descargar Documentacion</a>
+        </div>
+        <p>Si no cuentas con computador tambien puedes usar la consola interactiva</p>
+      </div>
     </section>
+      
+    <section id="seccion4">
+    <h2>Herramientas utiles</h2>
+
+      <div class="consola">
+        <h3>💻 Consola Interactiva</h3>
+
+        <textarea class="code">out->"Hello Wordl!"</textarea>
+        <div class="preview"></div>
+      </div>
+    </section>
+
     <footer>
-        <p>© 2025 Bello's Projects | <a href="https://github.com/bellosprojects/Heza">GitHub</a></p>
+      <p>© Bello's Projects 2025 | <a href="https://github.com/bellosprojects/Heza">GitHub</a></p>
     </footer>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
