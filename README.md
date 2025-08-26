@@ -1,180 +1,58 @@
-# Heza
+#Heza: Un Lenguaje para la Computación Matemática y Simbólica
 
-Información General: 
-Este es un lenguaje de programación interpretado no optimizado, hecho con fines completamente educativos, no 
-recomendado para proyectos de alta demanda en eficiencia o rutinas complejas. Dado que es un lenguaje interpretado, 
-su ejecución se basa en 3 partes: tokentizacion, construcción de AST y ejecución; en el proceso de tokentizacion se 
-ignoran por completo espacios en blanco, tabulación, saltos de línea y comentarios, por lo cual todo el código fuente 
-puede ser escrito en una única línea separando los tokens para evitar confusiones al Lexer , a pesar de la posibilidad, 
-esta práctica no es recomendada .Este producto está hecho por Bello’s Projects y todos los derechos están reservados. 
- 
-Extensión de archivos: 
-Los archivos deben tener la extensión. HZ 
- 
- 
-Comentarios: 
-Los comentarios de declaran con @, todo lo que este después del símbolo queda comentado 
- 
- 
-Declaración de variables: 
-Para declaras variables se usa la palabra reservada DATA, se pueden declara con un valor inicial o no, se pueden declarar 
-múltiples variables al mismo tiempo y si se quiere tener una vista de todos los valores que ha tenido una variable 
-durante la ejecución del programa se puede usar la palabra reservada TRACE al declarar (útil para depuración)  
- 
- 
-Bello’s Projects 
- HEZA DOCUMENTACION 
- 
-Constantes: 
-Para valores como salto de línea, tabulación y espacio en blanco (representados en string) existen constantes que 
-representan un valor, las cuales se pueden imprimir o asignar a otras variables, pasar como parámetro de función, usar 
-como operando, etc, pero como toda constante no se puede editar 
- 
- 
-Valores: 
-En Heza existen 6 tipos de valores: enteros, string (entre comillas dobles), booleanos, decimales, constantes y variables 
-(ya declaradas) 
- 
-Note que no existen caracteres sueltos 
- 
-Salida por consola: 
-Para imprimir unos o varios valores usamos la palabra reservada OUT, seguida del operador de flujo (->), mas la lista de 
-valores a imprimir 
- 
- 
- 
-Bello’s Projects 
- HEZA DOCUMENTACION 
- 
-Entrada por consola: 
-Para recibir datos por la consolase usa la palabra reservada IN, seguida del operador de flujo, mas la lista de variables a 
-las que se le asignara el valor recibido, pueden ser una o más variables obligatoriamente declaradas previamente, si 
-estas variables fueron declaradas con trace, se les agregara a su historial este cambio 
- 
- 
-Operaciones numéricas: 
-Como en la mayoría de los lenguajes de programación, en Heza existen dos tipos de operaciones con números: 
-aritméticas y lógicas. Las aritméticas usan los operadores + - * / % ^, siguiendo el orden de jerarquía de operaciones 
-PEMDAS, y las lógicas usan los operadores not and or, dando prioridad a los paréntesis y luego a la negación 
- 
- 
-Alias: 
-Se usa la palabra reservada AS, para apodar un bloque de código como una función, bucle o condicional, por cada alias 
-debe haber la palabra reservada END, que después del operador de referencia (:) lleva el alias, indicando que ese bloque 
-de código termino 
- 
-Las funciones tienen un modo distinto de declarar los alias que se verá más adelante 
-Bello’s Projects 
- HEZA DOCUMENTACION 
- 
-Condicionales: 
-Como se menciono antes, los condicionales agrupan líneas de código en su cuerpo, y están se engloban con un alias, 
-primero se coloca la condición entre signos de interrogación, luego se declara un alias, seguidamente va el cuerpo del 
-condicional y al final su respectivo end, si el alias del end no coincide con el declarado dará un error, puede haber 
-condicionales anidados 
- 
-Actualmente no existe una sentencia que tenga la funcionalidad de Else, la solución por ahora es realizar otro 
-condicional con la condición negada. Una vez cerrado el condicional se puede reutilizar el alias para otro bloque, pero si 
-los condicionales están anidados se debe buscar otro alias 
- 
- 
-Observaciones: 
-Las constantes LINE y TAB no pueden ser sustituidas por el literal “\n” o “\t”, ya que el programa imprimirá tal cual la 
-secuencia de caracteres, para eso existen las constantes que funcionan como secuencia de escapes. Heza viene con las 
-constantes matemáticas PI y E, las cuales se pueden usar como un valor decimal, no se pueden declarar variables con 
-estos nombres. Para recuperar el valor de trace una variable se usa la palabra reservada TRACE, seguida del operador 
-de referencia seguida del nombre de la variable, la cual obligatoriamente debe ser declarada con trace, de lo contrario 
-dará error. Este trace es un valor de tipo string, por lo cual se puede imprimir, asignar a otras variables y operar 
- 
- 
-Bello’s Projects 
- HEZA DOCUMENTACION 
- 
-Ciclos: 
-En Heza tenemos dos tipos de ciclos, numérico (FOR) y condicional (WHILE), ambos se declaran con la palabra 
-reservada LOOP, y ambos llevan un alias, la diferencia radica en que el while lleva una condición como parámetro y 
-termina con un signo de interrogación, y el for lleva 3 valores numéricos (inicio, final, incremento), separados por el 
-operador de referencia. En los ciclos de tipo numérico, el alias contiene el valor actual del ciclo, por lo cual se puede usar 
-como variable para imprimir, reasignar, operar etc. 
- 
-Al igual que en los condicionales, una ves cerrado el bloque se puede reutilizar el alias, también se puede anidar, pero 
-con alias distintos. Los únicos alias que son tratados como variables son los del loop FOR, por lo cual el alias de estos 
-bucles no puede tener el nombre de otras variables ya existentes 
- 
-Funciones: 
-Para las funciones se usa la palabra reservada BLOCK, estas también llevan un alias y cierran con end, pero no usan la 
-palabra reservada Aspara declarar el alias porque el nombre de la función actúa como el propio alias, para retornar un 
-valor dentro de una función se usa el operador de flujo seguido de un único valor a retornar 
- 
-Las funciones pueden tener múltiples parámetros, pero retornan un solo valor, también pueden no retornar nada, si se 
-le asigna el valor de una función que no retorna nada a una variable, se hará el procedimiento correspondiente en la 
-función, pero a la variable se le asignará el valor de None. Actualmente no se soportan parámetros por defecto en caso 
-de no enviarse en la llamada a la función 
- 
-Bello’s Projects 
- HEZA DOCUMENTACION 
- 
-Reasignación múltiple: 
-En Heza se puede hacer una reasignación múltiple de varias variables con varios valores, Heza hace un respaldo de los 
-valores actuales de las variables antes de la reasignación para evitar perder los valores en caso de reutilizarse, por lo 
-cual es útil y seguro para swaps. Esta forma de asignar es como con variables ya declaradas mas no en la línea de 
-declaración 
- 
- 
-CLS: 
-La palabra reservada CLS limpia la consola, no hace falta enviarla como parámetro ni nada simplemente escribirla y 
-funciona sola 
- 
- 
-Resumen: 
-A continuación, se muestra la lista de todas las palabras reservadas y operadores que existen en Heza 
- 
- 
- 
-Bello’s Projects 
- HEZA DOCUMENTACION 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-Extras: 
-Adicionalmente, en Heza existen unas funciones ya establecidas que se consideran necesarias para un programa 
-común, con el tiempo se irán agregando más en versiones posteriores, también hay dos métodos que solo pueden ser 
-aplicados con variables, no con valores inmediatos, las funciones declaradas por el usuario no pueden contener el 
-nombre de ninguna de las funciones/métodos predefinidos: 
- 
-No todas las funciones/métodos tiene resaltado de sintaxis en la extensión. 
-Todos los métodos/funciones que viene incorporados retornan un dato y deben tener () para identificarlos como una 
-llamada 
-Bello’s Projects 
- HEZA DOCUMENTACION 
- 
- 
- 
-Como usar: 
-Para programar en Heza ve a Visual Studio Code e instala la extensión Heza Extensión de Bello’s Projects, la versión mas 
-reciente es la 0.0.8, esta versión viene con resaltado de sintaxis, snippets y un botón en el menú llamado Run Heza. Para 
-que funcione se debe instalar el intérprete, cuyo enlace se encuentra en los detalles de la extensión, no se requieren 
-permisos de administrador para instalar ni editar variables de entorno. Al instalar el intérprete se asociarán 
-automáticamente los archivos .hz con Heza.exe, y al presionar el botón Run Heza en VS Code puedes ver el resultado en 
-la consola de VS Code sin abrir pestañas ni programas externos. 
- 
-Todo el código fuente del interprete se encuentra en mi GitHub Bello’s Projects en el repositorio Heza, junto al 
-interprete: 
- 
-Enlaces: 
-Extension: https://marketplace.visualstudio.com/items?itemName=BellosProjects.hezaextension 
-Intérprete: https://github.com/bellosprojects/Heza/raw/main/HezaSetup.exe 
-Código Fuente: https://github.com/bellosprojects/Heza 
- 
- 
- 
- 
- 
- 
-Todos los derechos están completamente reservados, espero que sea útil la información.
+***Introducción***
+Heza es un lenguaje de programación interpretado diseñado con un enfoque principal en la computación matemática y simbólica. Su objetivo es proporcionar una sintaxis que sea lo más cercana posible a la notación matemática tradicional, permitiendo a los usuarios escribir y resolver problemas de cálculo, álgebra y lógica de una manera intuitiva y legible. Basado en Python y aprovechando el poder de la biblioteca SymPy, Heza se posiciona como una herramienta ideal para la educación, la investigación y el prototipado de modelos matemáticos.
+
+***Filosofía y Enfoque***
+La piedra angular de Heza es la abstracción simbólica. A diferencia de los lenguajes de programación tradicionales que se centran en el cálculo numérico, Heza trata las expresiones matemáticas como objetos simbólicos. Esto significa que las variables, funciones y ecuaciones se manipulan de forma exacta, sin aproximaciones de punto flotante.
+
+***Las características principales incluyen:***
+
+Representación Matemática Nativa: Los operadores y la sintaxis (∂, ∫, ∈) reflejan directamente su significado matemático.
+
+Integración de Dominios: Combina sin fisuras el cálculo, la lógica de conjuntos y el álgebra para resolver problemas complejos que abarcan múltiples campos.
+
+Enfoque Educativo: La transparencia de su motor, que usa definiciones de límites y sumatorias, lo hace una excelente herramienta para visualizar y comprender los conceptos fundamentales del cálculo.
+
+***Características Clave***
+Heza está equipado con las siguientes funcionalidades, que lo convierten en un potente motor de cálculo simbólico:
+
+Operadores de Cálculo:
+
+Derivación: El operador ∂(f, var) calcula la derivada simbólica de una función f con respecto a la variable var.
+
+Integración: El operador ∫(f, var) calcula la integral indefinida, mientras que ∫(f, var ∈ [a..b]) calcula la integral definida.
+
+Evaluación y Conversión:
+
+Evaluación Simbólica (eval): La función eval(expr, var → valor) sustituye las variables en una expresión simbólica, permitiendo la manipulación y la simplificación de fórmulas.
+
+Conversión a Número (Num): La función Num(expr) convierte una expresión simbólica que ya no contiene variables en un tipo de dato numérico nativo, ideal para operaciones aritméticas finales y para manejar casos de indeterminación o resultados simbólicos no evaluados (log(2)).
+
+Constantes y Funciones: Heza incluye constantes fundamentales como pi, e, e oo (infinito), así como una amplia gama de funciones matemáticas (log, sin, exp, sinh, root, etc.), que se tratan como objetos de primera clase.
+
+Beneficios y Recomendaciones de Uso
+Heza ofrece varias ventajas únicas, aunque su naturaleza interpretada y simbólica influye en su rendimiento.
+
+***Ventajas:***
+
+Precisión Absoluta: Heza realiza cálculos simbólicos, lo que garantiza resultados exactos. No hay errores de redondeo o de precisión de punto flotante que se acumulen, lo que es crucial en matemáticas puras y en ciertos campos de la ingeniería.
+
+Legibilidad Inigualable: La sintaxis cercana a las matemáticas hace que los programas sean extremadamente fáciles de leer y entender, reduciendo la curva de aprendizaje para científicos y estudiantes.
+
+Capacidad de Prototipado Rápido: Su enfoque en las operaciones de alto nivel permite a los usuarios modelar problemas complejos y obtener soluciones simbólicas de forma rápida y eficiente.
+
+***Consideraciones (Rendimiento):***
+Heza no está diseñado para el alto rendimiento. Al ser un lenguaje interpretado y al depender de la computación simbólica (que es inherentemente más lenta que el cálculo numérico puro), su velocidad de ejecución es menor en comparación con lenguajes compilados como C++ o C.
+
+***Recomendaciones de Uso:***
+Heza es la herramienta perfecta para:
+
+Entornos Educativos: Ideal para que los estudiantes comprendan cómo los conceptos de cálculo y álgebra se traducen en código.
+
+Investigación Académica: Para la verificación de teoremas, la derivación de fórmulas o la manipulación de expresiones complejas.
+
+Scripting y Automatización: Para resolver problemas matemáticos puntuales donde la exactitud y la claridad de la expresión son más importantes que la velocidad de ejecución.
+
+Conclusión
+Heza es un lenguaje de nicho que llena un vacío importante en el ecosistema de la programación. Al priorizar la elegancia matemática y la precisión sobre el rendimiento, ofrece una experiencia de programación única para quienes trabajan con la ciencia y el cálculo. Su capacidad para traducir conceptos abstractos en código funcional lo convierte en un lenguaje prometedor para el futuro de la educación y la computación científica.
