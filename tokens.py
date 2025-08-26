@@ -3,34 +3,46 @@ tokens = [
     #palabras clave
     ('DATA', r'data'),
     ('TRACE', r'trace'),
-    ('LOOP', r'loop'),
     ('AS', r'as'),
-    ('ENDLAP', r'endlap'),
-    ('ENDNOW', r'endnow'),
     ('END', r'end'),
-    ('BLOCK', r'block'),
-    ('OUT', r'out'),
-    ('INSERT', r'insert'),
-    ('IN', r'in'),
-    ('CORRUTINE', r'corrutine'),
-    ('ATT', r'att'),
-    ('BUG', r'bug'),
-    ('DEFAULT', r'default'),
-
-    ('AND',r'and'),
-    ('OR',r'or'),
-    ('NOT',r'not'),
+    ('USE', r'use'),
+    ('PLAY', r'play'),
+    #Constantes
     ('FALSE',r'false'),
     ('TRUE',r'true'),
-    #Constantes
-    ('CLS', r'CLS'),
     ('TAB', r'TAB'),
     ('ESP', r'ESP'),
     ('LINE', r'LINE'),
+
+    #Signos
+    ('DEF', r'≔'),
+    ('ASIGNACION', r'←'),
+    ('UNIQUE', r'→>'),
+    ('THEN', r'→'),
+    ('OUT', r'⟹'),
+    ('INPUT', r'⟸'),
+    ('IN', r'∈'),
+    ('RETURN', r'↩'),
+    ('AND', r'∧'),
+    ('OR', r'∨'),
+    ('NOT', r'¬'),
+    ('SCOPE', r'◎'),
+    ('SQRT', r'√'),
+    ('NONE', r'∅'),
+    ('FOREACH', r'∀'),
+    ('EXIST', r'∃'),
+    ('SUBJET', r'⊂'),
+    ('DIFFERENT', r'≠'),
+    ('SUMMATION', r'∑'),
+    ('PRODUCTION', r'∏'),
+    ('INFINITE', r'∞'),
+    ('DERIVATIVE', r'∂'),
+    ('INTEGRAL', r'∫'),
     
     #Patrones
     ('NUMBER', r'\d+(\.\d+)?'),
     ('STR', r'"([^"]*)"'),
+    ('EXPRESION', r"'([^']*)'"),
     ('ID', r'[a-zA-Z_]\w*'),
 
     #\t \n ESP
@@ -40,14 +52,11 @@ tokens = [
     ('COMENTARIO', r'@(.*)'),
 
     #Operadores
-    ('DISTINTO', r'!='),
-    ('COMPARACION',r'=='),
+    ('COMPARACION', r'='),
     ('MAYORE',r'>='),
     ('MENORE',r'<='),
-    ('ASIGNACION', r'='),
     ('PIPE', r'>>'),
     ('BACK', r'<\*>'),
-    ('ARROW', r'->'),
     ('DOUBLEQ', r'\?\?'),
     ('Q', r'\?'),
     ('DOUBLEEXC', r'!!'),
@@ -65,7 +74,16 @@ tokens = [
     ('REFERENCE', r':'),
     ('OPENP', r'\('),
     ('CLOSEP', r'\)'),
-    ('DOLLAR', r'\$')
+    ('OPENC', r'\['),
+    ('CLOSEC', r'\]'),
+    ('OPENL', r'\{'),
+    ('CLOSEL', r'\}'),
+    ('DOLLAR', r'\$'),
+    ('BARRA', r'\|') 
 ]
 
-ExpresionValues = ['ID','STR','NUMBER','ESP','LINE','TAB','FALSE','TRUE','OPENP','RESTA','SUMA','NOT','TRACE']
+ExpresionValues = ['ID','STR','NUMBER','ESP','LINE','TAB','FALSE','TRUE','OPENP','OPENC','RESTA','SUMA','NOT','TRACE','SQRT','SUMMATION','NONE','BARRA','EXC','OPENL','FOREACH','EXIST','INFINITE','PRODUCTION','EXPRESION','DERIVATIVE','INTEGRAL']
+
+ExpresionList = ['OPENP','ID','OPENL','OPENC','STR']
+
+ExpresionExpr = ['EXPRESION', 'ID', 'DERIVATIVE', 'INTEGRAL']

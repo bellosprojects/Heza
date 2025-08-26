@@ -9,7 +9,7 @@ if len(sys.argv) > 1:
 
     path = sys.argv[1]
 
-    code = open(path).read()
+    code = open(path, encoding="UTF-8").read()
 
     lexer = Lexer(code)
     tokens = lexer.tokenize()
@@ -23,4 +23,4 @@ if len(sys.argv) > 1:
     heza.run()
     #heza.debug()
 
-#https://drive.google.com/file/d/1ysd1atyM8JuLFFLFQTjSbbFA8ecSvCq3/view?usp=sharing
+#https://github.com/bellosprojects/Heza/blob/main/HezaSetup.exe

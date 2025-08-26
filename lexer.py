@@ -17,6 +17,8 @@ class Lexer:
                         valor = match.group()
                         if token == 'NUMBER':
                             valor = int(float(valor)) if float(valor) % 1 == 0.0 else float(valor)
+                        elif token == 'STR' or token == 'EXPRESION':
+                            valor = valor[1:-1]
 
                         self.tokens_result.append((token, valor))
                     self.pos = match.end()
