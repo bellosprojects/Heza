@@ -1,4 +1,5 @@
-#Heza: Un Lenguaje para la Computación Matemática y Simbólica
+Heza: Un Lenguaje para la Computación Matemática y Simbólica
+---
 
 ***Introducción***
 Heza es un lenguaje de programación interpretado diseñado con un enfoque principal en la computación matemática y simbólica. Su objetivo es proporcionar una sintaxis que sea lo más cercana posible a la notación matemática tradicional, permitiendo a los usuarios escribir y resolver problemas de cálculo, álgebra y lógica de una manera intuitiva y legible. Basado en Python y aprovechando el poder de la biblioteca SymPy, Heza se posiciona como una herramienta ideal para la educación, la investigación y el prototipado de modelos matemáticos.
