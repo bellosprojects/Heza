@@ -10,10 +10,10 @@
 <body>
 
     <nav class="indice">
-      <a href="#seccion1">Informacion</a>
-      <a href="#seccion2">Documentacion</a>
-      <a href="#seccion3">Uso</a>
-      <a href="#seccion4">Herramientas</a>
+      <a href="#general">General</a>
+      <a href="#documentacion">Documentacion</a>
+      <a href="#instalacion">Instalacion</a>
+      <a href="#examples">Ejemplos</a>
     </nav>
 
     <div class="up">
@@ -23,10 +23,10 @@
       <div class="cilindro">
         <header>
           <img src="HezaLogo.ico" alt="HezaLogo">
-          <section class="section">
+          <div class="section">
             <h1>Heza Languaje</h1>
             <p>Las matemáticas en acción</p>
-          </section>
+          </div>
         </header>
       </div>
       
@@ -35,246 +35,834 @@
         <h2>Bello's Projects</h2>
       </div>
     </div>
+
+    <section class="general">
+      <h3 id="general">General</h3>
+      <p>Heza es un lenguaje de programación diseñado para facilitar la realización de cálculos matemáticos complejos y la manipulación de datos numéricos. Su sintaxis intuitiva y sus potentes funciones integradas permiten a los usuarios centrarse en la lógica matemática sin preocuparse por los detalles de implementación.</p>
+    </section>
+
+    <section class="documentacion">
     
-    <section id="seccion1">
+      <h3 id="documentacion">Documentación</h3>
 
-      <h2>Informacion General</h2>
-
-      <div class="card">
-        <h3>¿Que és? </h3>
-        <p>Heza es un lenguaje de programacion interpretado no optimizado con fines completamente educativos, no se enfoca rutinas complejas ni minuciosas sino mas bien en algoritmos creativos. </p>
-      </div>
-
-      <div class="card">
-        <h3>Enfoque</h3>
-        <p>Esta dirigido principalmente a la simplicidad de funciones geniales, y a su vez limitado a procesamientos detallados. Este enfoque hace que una tarea comun en otros lenguajes (como manipulacion de bits o memoria dinamica) sea imposible en Heza, pero tambien hace que tareas dificiles en bajo nivel (como un asistente activado por voz) sea algo trivial en Heza.</p>
-      </div>
-
-      <div class="card">
-        <h3>Proyectos comunes</h3>
-        <p>
-          Entre muchos otros, estos son algunos de los algoritmos comunes que pueden realizarse con Heza
-          <ul>
-            <li>Traduccion</li>
-            <li>Calculadora interactiva</li>
-            <li>Asistente activado por voz</li>
-            <li>Multiplexor de variables</li>
-            <li>Animacion de texto</li>
-            <li>Juegos de Azar</li>
-          </ul>
-        </p>
-      </div>
-    </section>
-
-    <section  id="seccion2">
-
-      <h2>Documentacion</h2>
-
-      <div class="card">
-        <h3>Comentarios</h3>
-        <p>Para comentar el codigo se usa el simbolo @</p>
-        <div class="codigo">
-  <span class="comment">@Este es un comentario</span>
-
-  Este es texto normal
+      <article class="doc">
+        <h4>Comentarios</h4>
+        <p>En heza declaramos los comentarios con el token @, solo soporta comentarios de una linea.</p>
+        <div class="heza-code">@Comentario
+@esto esta comentado
+pero esto no
         </div>
-        <p>Actualmente no hay soporte para comentarios multilinea</p>
-      </div>
-
-      <div class="card">
-        <h3>Palabras Clave</h3>
-        <p>Las palabras que le indican al interprete las instrucciones a ejecutar</p>
-        <div class="codigo">
-  <span class="keyword">data</span>       <span class="comment">@Declara variables</span>
-
-  <span class="keyword">trace</span>      <span class="comment">@Activa historial de cambios de variables</span>
-
-  <span class="keyword">out</span>        <span class="comment">@Salida por consola</span>
-
-  <span class="keyword">in</span>         <span class="comment">@Entrada de consola</span>
-
-  <span class="keyword">default</span>    <span class="comment">@Condicion por defecto</span>
-
-  <span class="keyword">block</span>      <span class="comment">@Declara funciones</span>
-
-  <span class="keyword">loop</span>       <span class="comment">@Inicializa bucles</span>
-
-  <span class="keyword">as</span>         <span class="comment">@Define alias para bloques de codigo</span>
-
-  <span class="keyword">end</span>        <span class="comment">@Termina el bloque de codigo de un alias</span>
-        </div>
-        <p>Hay que tener cuidado con la palabra reservada TRACE, ya que cuando se usa con el operador de referencia representa un valor y no una instruccion</p>
-      </div>
-
-      <div class="card">
-        <h3>Constantes</h3>
-        <p>Palabras que contienen valores utiles que no pueden ser reemplzados</p>
-        <div class="codigo">
-  <span class="operator">LINE</span>    <span class="comment">@Salto de linea (\n)</span>
-
-  <span class="operator">TAB</span>     <span class="comment">@Tabulacion (\t)</span>
-
-  <span class="operator">ESP</span>     <span class="comment">@Espacio en blanco (Este si puede ser reemplzado)</span>
-        </div>
-        <p>Por cuestiones del interprete, estos valores no se pueden reemplazar por su equivalente literal como en otros lenguajes y por eso se crearon las constantes de secuencia de escape</p>
-      </div>
-
-      <div class="card">
-        <h3>CLS</h3>
-        <p>La palabra CLS limpia la consola</p>
-        <div class="codigo">
-  <span class="operator">CLS</span>   <span class="comment">@Limpia la consola</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Valores</h3>
-        <p>En Heza existen 6 tipos de valores actualmente</p>
-        <ul>
-          <li>Enteros</li>
-          <li>Decimales</li>
-          <li>Strings</li>
-          <li>Booleanos</li>
-          <li>Constantes</li>
-          <li>Otras variables (ya declaradas)</li>
-        </ul>
-        <div class="codigo">
-  <span class="number">45</span>              <span class="comment">@Entero</span>
-
-  <span class="number">3.1415</span>          <span class="comment">@Decimal</span>
-
-  <span class="string">"Hello Wordl!"</span>  <span class="comment">@String</span>
-
-  <span class="operator">LINE</span>            <span class="comment">@Constante</span>
-
-  <span class="operator">false</span>           <span class="comment">@Booleano</span>
-
-  var             <span class="comment">@Variables</span>
-        </div>
-        <p>Todos los valores que no sean variables ya declaradas se consideran valores inmediatos, estos tienen la restriccion de que no se les puede aplicar metodos directamente</p>
-      </div>
-
-      <div class="card">
-        <h3>Operaciones aritmeticas (Numeros)</h3>
-        <p>En cuanto a las operaciones aritmeticas en Heza, existen 6 operaciones binarias y dos unarias, las cuales se ejecutan siguiendo la jerarquia de operadocion PEMDAS</p>
-        <div class="codigo">
-  <span class="comment">@Binarias</span>
-
-  a + b   <span class="comment">@Suma</span>
-
-  a - b   <span class="comment">@Resta</span>
-
-  a * b   <span class="comment">@Multiplicacion</span>
-
-  a / b   <span class="comment">@Division</span>
-
-  a % b   <span class="comment">@Mudulo</span>
-
-  a ^ b   <span class="comment">@Potencia</span>
-
-  <span class="comment">@Unarias</span>
-
-  -a      <span class="comment">@Numeros negativos</span>
-
-  +a      <span class="comment">@Numeros positivos con signo explicito</span>
-        </div>
-        <p>Estas operaciones son estrictamente para numeros, los string son manipulados mediante funciones integradas</p>
-      </div>
-
-      <div class="card">
-        <h3>Asignacion</h3>
-        <p>El operador de asignacion es el simbolo =, pero lo que destaca de la reasignacion en Heza es que se pueden reasignar multiples variables con multiples valores en una sola linea, lo cual es util pata swaps</p>
-        <div class="codigo">
-  x,y,z = y,z,x
-
-  a,b = <span class="number">34</span>,<span class="string">"Hola"</span>
-        </div>
-        <p>No hay ningun problema con hacer este tipo de operaciones ya que el interprete se encarga de hacer un respaldo previo de los valores antes de reasignarlos para evitar perder datos. Esto solo se puede hacer en reasignacion mas no en la declaracion de las variables</p>
-      </div>
-
-      <div class="card">
-        <h3>Operadores especiales</h3>
-        <p>Heza maneja 3 operadores especiales, cuyo uso es particular de aqui y tienen funciones importantes en el flujo y control</p>
-        <div class="codigo">
-  :   <span class="comment">@Operador de referenciacion (para TRACE y END)</span>
-
-  ->  <span class="comment">@Operador de flujo (para IN,OUT y retorno en funciones)</span>
-
-  ?   <span class="comment">@Operador de condicion (para bucles WHILE y condicionales)</span>
-        </div>
-        <p>Esto</p>
-      </div>
-
-      <div class="card">
-        <h3>Operadores de relacion</h3>
-        <p>Operadores que sirven para comparar valores</p>
-        <div class="codigo">
-  ==  <span class="comment">@Igual</span>
-
-  =!  <span class="comment">@Diferente</span>
-
-  >=  <span class="comment">@Mayor igual</span>
-
-  <=  <span class="comment">@Menor igual</span>
-
-  <  <span class="comment">@Menor estricto</span>
-
-  >  <span class="comment">@Mayor estricto</span>
-      </div>
-      <p>Estos operadores son binarios y los valores que lleven a los lados deben ser comparables</p>
-      </div>
-
-      <div class="card">
-        <h3>Operadores logicos</h3>
-        <p>Como en la mayoria de los lenguajes, en Heza existen 2 operadores binarios y un operador unario para expresiones logicas</p>
-        <div class="codigo">
-  <span class="comment">@Binarios</span>
-
-  and   <span class="comment">@Devuelve true si ambos operados son true</span>
-
-  or    <span class="comment">@Devuelve true si alguno de los operados es true</span>
-
-  <span class="comment">@Unario</span>
-
-  not   <span class="comment">@Niega la expresion psando de true a false y viceversa</span>
-  </div>
-        <p>Los valores que usan estos operadores deben ser booleanos, generalmente resultados de una comparacion</p>
-      </div>
-
-    </section>
-
-    <section  id="seccion3">
-      <h2>Como usar</h2>
-
-      <div class="card">
-        <h3>Instrucciones de uso</h3>
-        <p>
-          Descarga desde aqui la extension para Visual Studio Code, la cual te ayudara con el resaltado de sintaxis, los snippets y documentacion en vivo con hover tooltip, tambien incluye un boton en el menu llamado <span class="keyword">Run Heza</span> con el cual puedes ejecutar el codigo. Para que este boton funcione debes descargar el interprete e instalarlo, es muy sencillo! puedes obtener el enlace aqui en la Web o al descargar la extension. Tambien sera importante que descargues la documentacion en PDF para acceso offline por si tienes alguna duda sobre el lenguaje. Disfruta programando en Heza
-        </p>
-      </div>
-
+      </article>
       
-      <div class="download">
-        <h3>📩 Descargas</h3>
-        <p>Descarga la extension, el Interprete y la documentacion oficiales de Heza aqui</p>
-        <div class="links">
-          <a href="https://marketplace.visualstudio.com/items?itemName=BellosProjects.hezaextension" class="btn">Descargar Extension</a>
-          <a href="https://github.com/bellosprojects/Heza/releases/download/Heza/HezaSetup.exe" class="btn2">Descargar Interprete</a>
-          <a href="https://github.com/bellosprojects/Heza/raw/main/Heza%20Documentacion.pdf" class="btn3">Descargar Documentacion</a>
+      <article class="doc">
+        <h4>Palabras clave</h4>
+        <p>En Heza actualmente solo se emplean 5 palabras clave, aqui se detalla que hace cada una</p>
+        <div class="heza-code">@Palabras clave
+
+data    @Declarar variables
+trace   @Habilitar historial de cambios en variables (o extraer dicho historial)
+end     @Finalizar bloques de codigo (for, condicionales)
+play    @Para bucles while
+stop    @Detener bucles (while o for)
+
         </div>
-        <p>Si no cuentas con computador tambien puedes usar la consola interactiva</p>
-      </div>
-    </section>
+      </article>
       
-    <section id="seccion4">
-    <h2>Herramientas utiles</h2>
+      <article class="doc">
+        <h4>Tipos de datos</h4>
+        <p>En Heza existen 7 tipos de datos primitivos y 2 compuestos</p>
+        <div class="heza-code">@Tipo de datos primitivos
 
-      <div class="consola">
-        <h3>💻 Consola Interactiva</h3>
+12 5.6          @Number
+false true      @Bool
+"Hola Mundo"    @Text
+'x^2'           @Expresion
+∅               @Null
+∞               @Inf
+∄               @Nah (indeterminate)
 
-        <textarea class="code">out->"Hello Wordl!"</textarea>
-        <div class="preview"></div>
-      </div>
+@Tipo de datos compuestos
+
+{1,2,3,4}       @Set
+&(f(x) - 8)     @Reference
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Declaracion de variables</h4>
+        <p>Para declarar variables se utiliza la palabra reservada data, se pueden declarar multiples valores e incluso asignarles valores iniciales usando el operador de asignacion =, opcionalmente se puede activar el historial de cambios en vairables con la palabra reservada trace</p>
+        <div class="heza-code">@Declaracion simple
+data x
+
+@Declaracion multiple
+data a, b, c
+
+@Declaracion con asignacion
+data x = 5
+
+@Declaracion multiple con asignacion
+data a = 5, b = 10, c = 15
+
+@Declaracion con historial de cambios
+trace data y = 10
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Operadores aritmeticos</h4>
+        <p>En heza se emplean 5 operadores aritmeticos unarios y 6 binarios para cubrir todas las operaciones numericas básicas</p>
+        <div class="heza-code">@Operadores unarios
+
+-x   @Negacion
++x   @Positivo
+|x|  @Valor absoluto
+!x   @Factorial
+√x   @Raiz cuadrada
+
+@Operadores binarios
+
+x + y   @Suma
+x - y   @Resta
+x * y   @Multiplicacion
+x / y   @Division
+x ^ y   @Potenciacion
+x % y   @Modulo
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Operadores logicos</h4>
+        <p>En Heza utilizamos los operadore logicos propios de la logica proposicional</p>
+        <div class="heza-code">@Operadores logicos
+
+x ∧ y   @Y (AND)
+x ∨ y   @O (OR)
+¬x      @NO (NOT)
+x → y   @Implica
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Operadores de relacion</h4>
+        <p>Usamos los operadores estandares de los demas lenguajes con la excepcion del operador diferente de</p>
+        <div class="heza-code">@Operadores de relacion
+
+x = y    @Igual a
+x ≠ y    @Diferente de
+x < y    @Menor que
+x > y    @Mayor que
+x <= y    @Menor o igual que
+x >= y    @Mayor o igual que
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Operadores de conjuntos</h4>
+        <p>En Heza soportamos de forma nativa las operaciones con conjuntos</p>
+        <div class="heza-code">@Operadores de conjuntos
+
+A ∪ B   @Union
+A ∩ B   @Interseccion
+A Δ B   @Diferencia simetrica
+A ⊂ B   @Subconjunto
+a ∈ B   @Pertenencia
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Operadores especiales</h4>
+        <p>En Heza agregamos una serie de operadores especiales que ayudan a mantener la notacion matematica</p>
+        <div class="heza-code">@Operadores especiales
+
+A ← y     @Agregar x al conjunto A
+$x        @Copiar el valor de x del scope padre en el scope actual
+&(f(x))   @Referencia a la expresion f(x)
+≔        @Declarar funciones
+↩        @Retornar un valor de una funcion
+∀        @Cuantificador universal
+∃        @Cuantificador existencial
+∑        @Sumatoria
+∏        @Productoria
+∫        @Integral (definida o indefinida)
+∂        @Derivada (no parcial)
+→        @tendencia (en limites)
+:        @Condicion (en conuntos), apuntador (en end y trace), paso (en rangos) o tipo de dato (en variables)
+?        @Operador ternario (condicional)
+</div>
+      </article>
+
+      <article class="doc">
+        <h4>Imprimir</h4>
+        <p>Para imprimir un valor en la consola simplemente se agrega el valor al conjunto de salida (OUTPUT)</p>
+        <div class="heza-code">@Imprimir hola Mundo
+
+OUTPUT ← "Hola Mundo"
+        </div>
+
+        <p>Cabe destacar que OUTPUT es un conjunto normal por lo cual se puede acceder a sus valores (los datos impresos) en cualquier momento despues de agregarlos</p>
+      </article>
+
+      <article class="doc" id="converters">
+        <h4>Conversion</h4>
+        <p>Se Emplea la notacion dato >> Tipo para la conversion</p>
+        <div class="heza-code">@Conversion
+
+data x = "123"
+data y = x >> Number    @y vale 123 como Number
+data z = y >> Text      @z vale "123" como Text
+
+@Conversion invalida
+
+data a = "Hola"
+data b = a >> Number    @Error, no se puede convertir "Hola" a Number
+        </div>
+
+        <p>No se puede convertir un valor en un objeto Expresion y en algunos casos como el Text no esta permitida la conversion a Inf ya no que se puede seleccionar el signo</p>
+
+      </article>
+
+      <article class="doc">
+        <h4>Acceso a conjuntos</h4>
+        <p>Empleamos la notacion Set{Index} para acceder al valor almacenado en la posicion Index del conjunto Set, los indices negativos se entienden como |Set|+Index, es decir que -1 representa el ultimo valor, -2 el penultimo y asi</p>
+        <div class="heza-code">@Acceso a conjuntos
+
+data A = {10, 20, 30, 40, 50}
+data x = A{2}      @x vale 30
+data y = A{-1}     @y vale 50
+        </div>
+
+        <p>Los indices inician en 0 como el los demas lenguajes</p>
+      </article>
+
+      <article class="doc">
+        <h4>Sumatorias</h4>
+        <p>En Heza soportamos las sumatorias de forma nativa, aqui te explicamos su notacion</p>
+        <div class="heza-code">@Sumatorias
+
+∑(k ∈ Set, f(k))    @Suma f(k) para cada k en Set
+
+@ejemplo:
+
+data A = {1,2,3,4,5}
+data suma = ∑(k ∈ A, k^2)   @suma vale 55 (1^2 + 2^2 + 3^2 + 4^2 + 5^2)
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Productorias</h4>
+        <p>Emplean una notacion muy similar a las sumatorias</p>
+        <div class="heza-code">@Productorias
+
+∏(k ∈ Set, f(k))    @Multiplica f(k) para cada k en Set
+
+@ejemplo:
+
+data A = {1,2,3,4,5}
+data prod = ∏(k ∈ A, k)   @prod vale 120 (1 * 2 * 3 * 4 * 5)
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Cuantificador existencial</h4>
+        <p>Verifica que una condicion se cumpla para al menos un elemento del conjunto</p>
+        <div class="heza-code">@Cuantificador existencial
+
+∃k ∈ Set: condicion(k)   @Verdadero si existe al menos un k en Set que cumple condicion(k)
+
+@ejemplo:
+
+data A = {2,4,6,8,10}
+data existe_impar = ∃k ∈ A: k % 2 = 1   @existe_impar vale false
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Cuantificador universal</h4>
+        <p>Verifica que la condicion se cumpla para todos los elementos del conjunto</p>
+        <div class="heza-code">@Cuantificador universal
+
+∀k ∈ Set: condicion(k)   @Verdadero si todos los k en Set cumplen condicion(k)
+
+@ejemplo:
+
+data A = {2,4,6,8,10}
+data todos_pares = ∀k ∈ A: k % 2 = 0   @todos_pares vale true
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Rangos</h4>
+        <p>Un Rango es un conjunto de numeros que delimitados inferior y superiormente, al cual se le puede especificar o no la distancia entre los valores (1 0 -1 si no se especifica), los valor from y to deben cumplir unas ciertas normas dependiendo del paametro step</p>
+        <div class="heza-code">@Rangos
+
+data R1 = [1..10]          @R1 vale {1,2,3,4,5,6,7,8,9,10} y step por defecto es 1
+data R2 = [10..1]      @R2 vale {10,9,8,7,6,5,4,3,2,1} y step por defecto es -1
+
+@Paso especifico
+
+data R3 = [1..10:2]       @R3 vale {1,3,5,7,9}
+data R4 = [10..1:-2]      @R4 vale {10,8,6,4,2}
+
+@Error de rango invalido
+
+data R5 = [1..10:-1]      @Error, el paso no concuerda con from y to
+data R6 = [10..1:1]       @Error, el paso no concuerda con from y to
+
+@Error de step 0
+data R7 = [1..10:0]       @Error, el paso no puede ser 0
+        </div>
+      </article>
+      
+      <article class="doc">
+        <h4>Referencias</h4>
+        <p>En heza soportamos de forma nativa la referencia a expresiones complejas, funciona almacenando el AST de la expresion y usando el metodo de lazy-evaluation para obtener el valor solo cuando se solicite (desreferenciacion automatica)</p>
+        <div class="heza-code">@Referencias
+
+data x = 5
+data ref = &(x + 10)    @ref es una referencia a la expresion (x + 10), es decir, no almacena 15 sino la expresion misma
+
+x = 20    @Cambiamos el valor de x
+
+data valor_ref = ref     @valor_ref vale 30, ya que al desreferenciar ref se evalua la expresion (x + 10) con el nuevo valor de x pero ref sigue almacenando la expresion original (x + 10)
+        
+
+data y = &(u + 5)   @y es una referencia a la expresion (u + 5), aunque u no este declarada aun
+
+OUTPUT ← y    @Al desreferenciar y se busca el valor de u en el scope actual, si u no esta declarada en el scope actual o en los scopes padres se genera un error
+</div>
+
+        <p>Las referencias no necesitan que las variables de las cuales dependen esten declaradas al momento de crear la referencia, pero si al momento de evaluar, por lo cual al desreferenciar la expresion buscara los valores en el scope actual y no en el scope donde de declaro</p>
+      </article>
+
+      <article class="doc">
+        <h4>Expresion</h4>
+        <p>En Heza manejamos de forma nativa las expresiones simbolicas, las cuales son necesarias para resolver limites, derivadas e integrales, ademas tienen integradas una notacion para sustitucion de variables por valores</p>
+        <div class="heza-code">@Expresion
+
+data expr = 'x^2 + 2*x + 1'    @expr almacena la expresion simbolica
+
+@Sustitucion de variables
+data resultado = eval(expr, x = 3)   @resultado vale 16, ya que se sustituye x por 3 en la expresion y luego se evalua (3^2 + 2*3 + 1)
+        </div>
+
+        <p>Aunque el resultado ya no contiene variables libres, el resultado es un objeto Expresion, no un Number, por lo cual para tratarlo como un numero hay que usar una operacion de <a href="#converters">conversion</a></p>
+      
+        <div class="heza-code">@Obteniendo el resultado en un Number
+
+data num_result = resultado >> Number   @num_result vale 16 como Number
+
+@Caso invalido
+
+data invalid = expr >> Number    @Error, no se puede convertir una expresion con variables libres a Number
+        </div>
+
+        <p>Cuando en la funcion eval no se especifica que variable sera la sustituida, el interprete busca los valores para las variables declaradas en el scope para sustituir (no recomendado)</p>
+
+        <div class="heza-code">@eval global
+data x = 4
+data expr2 = 'x^3 + x^2 + x + 1'
+
+data result = eval(expr2)   @result vale 85 (como Expresion), ya que se sustituye x por 4 en la expresion y luego se evalua (4^3 + 4^2 + 4 + 1)
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Limites</h4>
+        <p>Los limites son nativos en heza y aqui te mostramos su notacion</p>
+        <div class="heza-code">@Limites (Expresion)
+
+lim(f(x), x → a dir)    @Limite de f(x) cuando x tiende a a desde la direccion dir (opcional, dir puede ser +, - o vacío)
+
+@ejemplo:
+
+data limite1 = lim('1/x', x → 0+)    @limite1 vale ∞
+data limite2 = lim('1/x', x → 0-)    @limite2 vale -∞
+data limite3 = lim('1/x', x → 0)      @limite3 vale Nah (indeterminate)
+
+data limite4 = lim('x^2', x → 3)      @limite4 vale 9
+
+@Ejemplos de limites xon variables libres
+data expr = '((x+h)^2 - x^2) / h'
+
+data limite5 = lim(expr, h → 0)       @limite5 vale 2*x (como Expresion y no se puede convertir a Number ya que depende de x)
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Derivadas</h4>
+        <p>En Heza trabajamos las derivadas de forma nativa, aun no hay soporte para derivadas parciales</p>
+        <div class="heza-code">@Derivadas (Expresion)
+∂(f(x), x)    @Derivada de f(x) con respecto a x
+
+@ejemplo:
+
+data derivada1 = ∂('x^3 + 2*x^2 + x + 1', x)   @derivada1 vale '3*x^2 + 4*x + 1' (Expresion)
+
+data derivada2 = ∂('Sin(x)', x)                  @derivada2 vale 'Cos(x)' (Expresion)
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Integrales</h4>
+        <p>Las integrales son nativas en Heza, te mostramos la notacion de la integrales definidas e indefinidas</p>
+        <div class="heza-code">@Integrales (Expresion)
+
+∫(f(x), x)            @Integral indefinida de f(x) con respecto a x
+∫(f(x), x ∈ [a..b])      @Integral definida de f(x) con respecto a x desde a hasta b (esa es la notacion para los limites de integracion, no esta permito usar otros conjuntos o variables)
+
+@ejemplo de error:
+
+data integral_error = ∫('x^2', x ∈ {1,2,3})   @Error, los limites de integracion deben ser un rango
+
+data rango = [0..1]
+data integral_definida = ∫('x^2', x ∈ rango)    @Error, los limites de integracion deben ser un rango definido en el mismo lugar
+
+@ejemplo de integral indefinida:
+data integral_indefinida = ∫('x^2', x)           @integral_indefinida vale '(1/3)*x^3' (Expresion)
+
+@ejemplo de integral definida:
+data integral_definida2 = ∫('x^2', x ∈ [0..3])   @integral_definida2 vale 9 (Number)
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Filtros</h4>
+        <p>Tenemos una notacion espeficica para filtrar los elementos de los conjuntos</p>
+        <div class="heza-code">@Filtros (Set)
+  
+{ x ∈ Set: condition(k) }   @Crea un nuevo conjunto con los elementos k de Set que cumplen condition(k)
+
+@ejemplo:
+
+data A = {1,2,3,4,5,6,7,8,9,10}
+
+data pares = { x ∈ A: x % 2 = 0 }   @pares vale {2,4,6,8,10}
+
+data mayores_5 = { x ∈ A: x > 5 }   @mayores_5 vale {6,7,8,9,10}
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Transformacion</h4>
+        <p>Podemos tranformar (mapear) un conjunto a un nuevo valor e incluso agregar la notacion de filtro y multiples conjuntos a la vez (todos deben ser del mismo tamaño)</p>
+        <div class="heza-code">@Transformation (Set)
+
+{ f(k) | k ∈ Set }   @Crea un nuevo conjunto aplicando f(k) a cada elemento k de Set
+
+@ejemplo:
+
+data A = {1,2,3,4,5}
+
+data cuadrados = { k^2 | k ∈ A }   @cuadrados vale {1,4,9,16,25}
+
+data B = {10,20,30,40,50}
+
+@ejemplo con filtro:
+
+data cuadrados_pares = { k^2 | k ∈ A: k % 2 = 0 }   @cuadrados_pares vale {4,16}
+
+@ejemplo con multiples conjuntos:
+
+data sumas = { x + y | x ∈ A, y ∈ B }   @sumas vale {11,22,33,44,55}
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Bucle For</h4>
+        <p>Empleamos la notacion matematica de realizar una accion para cada elemento de un conjunto</p>
+        <div class="heza-code">@Bucle For
+
+∀k ∈ Set: accion(k)   @Realiza accion(k) para cada k en Set
+
+@ejemplo:
+
+data A = {1,2,3,4,5}
+∀k ∈ A: OUTPUT ← k^2    @Imprime los cuadrados de los elementos de A (1,4,9,16,25)
+      
+
+@Bucle For con multiples acciones
+
+∀k ∈ A::
+  
+  @ acciones
+
+@finalizar
+end:k 
+
+@ejemplo:
+
+data A = {1,2,3,4,5}
+
+∀k ∈ A::
+  OUTPUT ← k
+  OUTPUT ← k^2
+end:k    @Imprime los elementos de A y sus cuadrados
+        </div>
+
+        <p>Tambien se pueden recorrer multiples conjuntos en un mismo bucle con distintas variables iteradoras (todos los conjuntos deben tener el mismo tamaño), en caso de bucle multilinea la variable que se situa luego de end: es el nombre de la primera variable</p>
+
+        <div class="heza-code">@Recorrer multiples conjuntos
+
+data B = {10,20,30,40,50}
+
+∀x ∈ A, y ∈ B::
+  OUTPUT ← x + y
+end:x    @Imprime la suma de los elementos correspondientes de A y B (11,22,33,44,55)
+        
+@Una sola accion sin end
+
+∀x ∈ A, y ∈ B: OUTPUT ← x + y    @Imprime la suma de los elementos correspondientes de A y B (11,22,33,44,55)
+        </div>
+
+      </article>
+
+      <article class="doc">
+        <h4>Condicionales</h4>
+        <p>En heza usamos una notacion especial para manejar los condicionales usando como condicion variables de tipo Reference y la notacion de bucles For para los bloques de codigo</p>
+        <div class="heza-code">@Condicionales 
+
+condicion: unica_accion
+
+condicion::
+
+  @ multiples acciones
+
+@finalizar
+end:condicion
+
+@If-else
+
+condicion: unica_accion_si_verdadero : unica_accion_si_falso
+
+condicion::
+  @ multiples acciones si verdadero
+:
+  @ unica_accion_si_falso
+
+condicion::
+  @ multiples acciones si verdadero
+::
+  @ multiples acciones si falso
+end:condicion
+
+@ejemplos:
+
+data x = 10
+data y = 20
+
+data condicion = &(x > y)
+condicion: OUTPUT ← "x es mayor que y" : OUTPUT ← "x no es mayor que y"
+
+&(x > y) ::
+  OUTPUT ← "x es mayor que y"
+:
+  OUTPUT ← "x no es mayor que y"
+end:condicion
+
+condicion::
+  OUTPUT ← "x es mayor que y"
+:
+  OUTPUT ← "x no es mayor que y"
+
+condicion::
+  OUTPUT ← "x es mayor que y"
+::
+  OUTPUT ← "x no es mayor que y"
+end:condicion
+        </div>
+
+        <p>El operador : indica unica accion (como verdadero o como falso) y el operador :: indica bloque de codigo (requiere end), si las acciones de verdadero son varias pero las acciones de falso es una sola (:) el final del condicional no requiere end:condition_name</p>
+      </article>
+
+      <article class="doc">
+        <h4>Bucles While</h4>
+        <p>Se emplea una notacion muy parecida a los condicionales pero agregando la palabra reservada play para indicar que las acciones se repiten mientras se cumpla la condicion. Nota: El bloque de codigo flase se ejecuta una sola vez solo si la condicion no se cumple inicialmente</p>
+        <div class="heza-code">@Bucles While
+
+condicion play: unica_accion
+
+condicion play:: 
+
+  @ multiples acciones
+
+@finalizar
+end:condicion
+
+
+@While-else
+
+condicion play: unica_accion_si_verdadero : unica_accion_si_falso
+
+condicion play::
+  @ multiples acciones si verdadero
+:
+  @ unica_accion_si_falso
+
+condicion play::
+  @ multiples acciones si verdadero
+::
+  @ multiples acciones si falso
+end:condicion
+
+@ejemplos:
+
+data x = 1
+
+&(x <= 5) play::
+  OUTPUT ← x
+  x = x + 1
+end:condicion    @Imprime los numeros del 1 al 5
+
+data y = 10
+data condicion2 = &(y < 5)
+condicion2 play::
+  OUTPUT ← y
+  y = y - 1
+:
+  OUTPUT ← "y no es menor que 5"
+end:condicion2    @Imprime "y no es menor que 5"
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Stop</h4>
+        <p>La palabra reservada stop solo se puede utilizar dentro de un bucle for o while (el el bloque que se repite, no el la accion por default) y rompe el bucle mas interno (si estan anidados)</p>
+        <div class="heza-code">@Stop
+
+data x = 1
+data condicion = &(x <= 10)
+data parada = &(x = 5)
+
+condicion play::
+  OUTPUT ← x
+  x = x + 1
+  parada: stop
+end:condicion    @Imprime los numeros del 1 al 4
+
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Funciones</h4>
+        <p>En Heza declaramos las funciones un poco distinto a lo habitual</p>
+        <div class="heza-code">@Declaracion de funciones
+
+funcion_name ≔ (param1, param2, ...): unica_accion
+
+funcion_name ≔ (param1, param2, ...)::
+  @ multiples acciones
+
+@finalizar
+end:funcion_name
+
+@Ejemplos:
+@Saludar
+
+saludar ≔ (nombre): OUTPUT ← "Hola, " + nombre
+
+@Para Retornar un valor en una funcion usamos el operador ↩ (Solo se puede retornar un valor por funcion)
+
+sumar ≔ (a, b): ↩ a + b
+
+multiplicar ≔ (a, b)::
+  resultado = a * b
+  ↩ resultado
+end:multiplicar
+
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Trace</h4>
+        <p>Como se menciono anteriormente, la palabra reservada trace habilita el historial de variables, ahora te explicamos como obtener dicho historial, el cual es un conjunto con todos los valores que ha tomado la variable desde su creacion en orden cronologico</p>
+        <div class="heza-code">@Trace
+
+trace:x       @Obtiene el historial de la variable x como un conjunto
+
+@Ejemplo:
+
+data trace a = 5
+a = 10
+
+OUTPUT ← trace:a    @Imprime {5,10}
+
+@Caso error
+OUTPUT ← trace:b    @Error, b no tiene historial ya que no fue declarada con trace
+        </div>
+
+        <p>Nota: si una variable no se declara inicialmente con trace ya no se puede activar durante la ejecucion</p>
+      </article>
+      
+      <article class="doc">
+        <h4>Reasignacion</h4>
+        <p>En Heza soportamos la reasignacion multiple de variables de forma segura, realizando una copia inicial de los valores antes de reasignar</p>
+        <div class="heza-code">@Reasignacion
+
+data x = 5
+data y = 10
+
+x,y = y,x    @Ahora x vale 10 e y vale 5
+
+        </div>
+
+        <p>Es importante que la cantidad de variables corresponda a la cantidad de nuevos valores</p>
+      </article>
+
+      <article class="doc">
+        <h4>Obtener tipo</h4>
+        <p>Para obtener el typo de dato (en formato Text) de un valor puedes seguir la siguiente notacion</p>
+        <div class="heza-code">@Obtener tipo
+
+:value     @Obtiene el tipo de dato de value como Text
+
+@Ejemplo:
+
+data x = 5
+data tipo_x = :x    @tipo_x vale "Number"
+        </div>
+
+        <p>Tambien se puede usar en conversor para convertir un dato en el tipo de otro</p>
+
+        <div class="heza-code">@Como conversor
+
+data x = 5
+data y = "10"
+data z = y >> :x    @z vale 10 como Number, ya que :x devuelve "Number" y se convierte y a ese tipo
+
+@Caso invalido
+data tipo = :x
+data invalid = y >> tipo    @Error, tipo esta en formato Text y no se puede usar como tipo de dato directamente
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Entrada por consola</h4>
+        <p>Para recibir datos pos consola se usa la funcion INPUT(msg1, msg2, ...) que recibe tantos valores como parametros se indiquen mostrando antes el mensaje correspondiente, luego esos datos se almacenan en el conjunto INPUT del cual se pueden extraer</p>
+        <div class="heza-code">@Entrada por consola
+
+INPUT("Ingrese su nombre:", "Ingrese su edad:")   @Muestra los mensajes y espera la entrada del usuario
+data nombre = INPUT{0}    @Extrae el primer valor ingresado (nombre)
+data edad = INPUT{1}      @Extrae el segundo valor ingresado (edad)
+
+        </div>
+
+        <p>Nota: los datos obtenido por consola se almacenan en formato Text y admiten espacios en blanco</p>
+      </article>
+
+      <article class="doc">
+        <h4>Secuencias de escape</h4>
+        <p>A diferencia de otros lenguajes, en Heza las Secuencias de escape como \n o \t no se interpretan como salto de linea o tabulador sino como una secuancia de carateres mas, por lo cual se emplean las constantes de tipo Text que cumplen esa tarea</p>
+        <div class="heza-code">@Secuencias de escape
+
+LINE @Constante de tipo Text que representa un salto de linea
+TAB  @Constante de tipo Text que representa un tabulador
+
+data texto = "Hola," + LINE + TAB + "Mundo!"   @texto vale "Hola,\n\tMundo!" (segun la notacion de secuencias de escape)
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Operador ternario</h4>
+        <p>Es una expresion de tres valores que devuelve un valor si se cumple una condicion u otro si no se cumple (la condicion es una variable de tipo Reference)</p>
+        <div class="heza-code">@Operador ternario
+
+condicion ? valor_si_verdadero : valor_si_falso
+
+@Ejemplo:
+
+data x = 10
+
+data resultado = &(x > 5) ? "x es mayor que 5" : "x no es mayor que 5"
+@resultado vale "x es mayor que 5"
+
+        </div>
+      </article>
+
+    </section>
+
+    <section class="instalation">
+      <h3 id="instalacion">Instalación</h3>
+    </section>
+
+    <section class="examples">
+      <h3 id="examples">Ejemplos de codigo</h3>
+
+      <article class="doc">
+        <h4>Hola mundo</h4>
+        <p>Codigo que muestra un Hola Mundo! en la consola</p>
+        <div class="heza-code">@Hola mundo
+
+OUTPUT ← "Hola Mundo!"
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Calculo de la suma de los primeros n numeros naturales</h4>
+        <p>Codigo que calcula la suma de los primeros n numeros naturales usando una sumatoria</p>
+        <div class="heza-code">@Suma de los primeros n numeros naturales
+
+INPUT("Ingrese un numero natural n:")
+data n = INPUT{0} >> Number
+
+data A = [1..n]
+data suma = ∑(k ∈ A, k)
+
+OUTPUT ← "La suma de los primeros " + n >> Text + " numeros naturales es: " + suma >> Text
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Factorial con productoria</h4>
+        <p>Calculo del factorial de un numero n usando la productoria</p>
+        <div class="heza-code">@Factorial con productoria
+
+INPUT("Ingrese un numero natural n:")
+data n = INPUT{0} >> Number
+
+data A = [1..n]
+data factorial = ∏(k ∈ A, k)
+
+OUTPUT ← "El factorial de " + n >> Text + " es: " + factorial >> Text
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Calculo de la integral definida de x^2 desde 0 hasta 3</h4>
+        <p>Codigo que calcula la integral definida de x^2 desde 0 hasta 3</p>
+        <div class="heza-code">@Integral definida de x^2 desde 0 hasta 3
+
+data integral = ∫('x^2', x ∈ [0..3])
+OUTPUT ← "La integral definida de x^2 desde 0 hasta 3 es: " + integral >> Text
+        </div>
+      </article>
+
+      <article class="doc">
+        <h4>Obtener numeros primos del 0 a 100</h4>
+        <p>Codigo que obtiene el conjunto de los numeros primos del 0 al 100 usando los filtros y la funcion es primo</p>
+        <div class="heza-code">@Numeros primos
+
+data es_primo ≔ (num)::
+
+  data i = 2
+
+  &(i <= √num) play::
+    
+    &(num % i = 0): ↩ false
+    i = i + 1
+
+  end:condicion
+
+  ↩ true
+
+end:es_primo
+
+data A = [2..100]
+data primos = { k ∈ A: es_primo(k) }
+
+OUTPUT ← "Los numeros primos del 0 al 100 son: " + primos >> Text
+        </div>
+      </article>
+
     </section>
 
     <footer>
@@ -283,5 +871,4 @@
 
     <script src="script.js"></script>
   </body>
-
 </html>
