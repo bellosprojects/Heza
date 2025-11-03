@@ -1,42 +1,17 @@
-textarea.code {
-    width: 100%;
-    height: 200px;
-    font-size: 14px;
-    line-height: 1.4;
-    padding: 10px;
-    background: #1e1e1e;
-    color: #ffffff;
-    border: 1px solid #444;
-    resize: vertical;
-    box-sizing: border-box;
-}
-
-div.preview {
-    width: 100%;
-    min-height: 200px;
-    font-size: 14px;
-    line-height: 1.4;
-    padding: 10px;
-    background: #2d2d2d;
-    color: #ccc;
-    border: 1px solid #444;
-    margin-top: 10px;
-    white-space: pre-wrap;
-    word-break: break-word;
-    box-sizing: border-box;
-    overflow: auto;
-}
-
-.comment  { color: #9cdeba; font-style: italic; }
-.string   { color: #ce9178; }
-.number   { color: #77e03e; }
-.keyword  { color: #2a71ac; font-weight: bold; }
+.comment  { color: #7a7e94; font-style: italic; }
+.string   { color: rgb(244, 186, 119); }
+.number   { color: #1ad716; }
+.keyword  { color: #2880c9; font-weight: bold; }
 .operator { color: #ff8c00; }
+.function { color: #bdfe18; }
+.expresion { color: #83ffec; }
 
-.codigo{
+.heza-code{
     white-space: pre-wrap;
-    background-color: #1e1e1e;
+    background-color: #19191b;
     padding: 15px;
-    border-radius: 2px;
+    border-radius: 4px;
     color: white;
+    overflow: auto;
+    margin: 10px;
 }
