@@ -1,5 +1,5 @@
 body {
-    background: #e5e5e5;
+    background: #dedede;
     font-family: monospace;
     color: #000000;
     margin: 0px;
@@ -35,40 +35,24 @@ html{
 
 .cilindro{
     perspective: 400px;
+    perspective-origin: center;
+    transform-style: preserve-3d;
+    width: 100%;
 }
 
 header{
     z-index: 1;
-    margin-left: auto;
-    margin-right: auto;
     padding: 7px;
     border-radius: 20px;
     margin-top: 80px;
-    width: fit-content;
     justify-content: center;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 25px;
     transform-style: preserve-3d;
-    transform: translateZ(50px);
+    padding-right: 30px;
 }
-
-.section{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform-style: preserve-3d;
-}
-
-.section p{
-    color: #dcdbdf;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    transform: rotateY(-15deg);
-    transition: all .3s ease-in;
-}
-
 header img{
     width: 105px;
     margin-left: 20px;
@@ -76,7 +60,7 @@ header img{
 }
 
 header h1{
-    text-shadow: 4px 2px 5px #999999;
+    text-shadow: 3px 2px 8px #999999;
     color: #ffffff;
     margin: 0;
     font-size: 38px;
@@ -85,124 +69,8 @@ header h1{
     text-transform: uppercase;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-bottom: 1px solid #f5f5f5;
-    animation: textshadow 3s linear infinite;
     transform: rotateY(22deg);
     transition: all .3s ease-in;
-}
-
-.section:hover > h1{
-    transform: rotateY(-10deg);
-}
-
-.section:hover > p{
-    transform: rotateY(22deg);
-}
-
-@keyframes textshadow {
-    0%,100%{
-        text-shadow: 4px 2px 5px #4f4f4f;
-    }
-    50%{
-        text-shadow: -4px 2px 5px #4f4f4f;
-    }
-}
-
-.card, .download{
-    margin: 20px;
-    background-color: #f4f4f4;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0px 5px 3px #33333380;
-    transition: all .3s ease;
-}
-
-.card:hover, .download:hover{
-    transform: scale(1.015);
-}
-
-.card h3{
-    color: #333333;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.card p{
-    color: #333333;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.consola{
-    margin: 20px;
-    color: #e1e1e1;
-    border: 1px solid #333333;
-    padding: 10px;
-    border-radius: 12px;
-    background-color: #111111;
-}
-
-.consola h3{
-    margin-left: 20px;
-    font-size: 20px;
-}
-
-.download h3{
-    color: #333333;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-}
-
-.download p{
-    color: #333333;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.links{
-    margin: 30px 0px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-li{
-    color: #333333;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.btn{
-    background-color: #055dc1;
-    text-decoration: none;
-    padding: 10px;
-    margin: 5px;
-    color: white;
-    border-radius: 5px;
-}
-
-.btn2{
-    background-color: #47474a;
-    text-decoration: none;
-    padding: 10px;
-    margin: 5px;
-    color: white;
-    border-radius: 5px;
-}
-
-.btn3{
-    background-color: #388713;
-    text-decoration: none;
-    padding: 10px;
-    margin: 5px;
-    color: white;
-    border-radius: 5px;
-}
-
-.btn, .btn2, .btn3{
-    transition: all .3s ease-in;
-    text-transform: uppercase;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: small;
-    padding: 15px;
-}
-
-.btn:hover, .btn2:hover, .btn3:hover{
-    transform: scale(1.06);
 }
 
 footer{
@@ -225,26 +93,17 @@ footer p{
     background-size: cover;
     position: relative;
     padding-top: 35px;
+    width: 100%;
 }
 
 .fondo{
     position: absolute;
-    background-color: #000000d4;
+    filter: brightness(0.3);
     top: 0;
     width: 100%;
     height: 100%;
     left: 0;
-}
-
-h2{
-    background-color: #171717;
-    padding: 15px;
-    border-radius: 5px;
-    color: #e9e9e9;
-    margin-left: 48px;
-    margin-top: 20px;
-    width: fit-content;
-    text-transform: uppercase;
+    backdrop-filter: blur(1.8px);
 }
 
 .indice{
@@ -298,7 +157,73 @@ h2{
     left: 0;
 }
 
+.section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.section p{
+    color: #dcdbdf;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transform: rotateY(-15deg);
+    transition: all .3s ease-in;
+}
+
+.section:hover > h1{
+    transform: rotateY(-10deg);
+}
+
+.section:hover > p{
+    transform: rotateY(22deg);
+}
+
+section h3{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #222222;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 20px;
+    margin-left: 20px;
+    border-bottom: 1px solid #222222;
+    width: fit-content;
+    margin-top: -40px;
+    padding-top: 65px;
+}
+
+section h4{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #313131;
+    text-transform: uppercase;
+    letter-spacing: .2px;
+    font-size: 16px;
+    margin-left: 25px;
+}
+
+section h4::before{
+    content: "• ";
+}
+
+section article.doc{
+    margin: 15px;
+    padding-bottom: 10px;
+}
+
 section{
-    padding-top: 50px;
-    margin-top: -30px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
+    margin: 15px 10px;
+}
+
+section p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 15px;
+    margin: 10px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
 }
