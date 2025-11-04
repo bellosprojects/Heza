@@ -1,46 +1,88 @@
-document.addEventListener("DOMContentLoaded", () => {
-      const textarea = document.querySelector(".code");
-      const preview  = document.querySelector(".preview");
+/**
+ * Procesa un texto y resalta elementos (palabras clave, números, etc.) 
+ * con elementos <span> que tienen una clase CSS específica.
+ *
+ * @param {string} texto - El código o texto a resaltar.
+ * @returns {string} El texto con los elementos <span> insertados.
+ */
+function resaltarCodigo(texto) {
+    // 1. Definición de la expresión regular maestra
+    // El orden de las partes es CRÍTICO, las más específicas primero.
+    const regex = new RegExp(
+        // 1. Cadenas de texto (entre comillas dobles o simples)
+        // Coincide con cualquier carácter excepto la comilla de cierre.
+        '(".*?")|' +         // Cadenas con comillas dobles
+        "('.*?')|" +         // Cadenas con comillas simples
+        // 2. Comentarios (@comentario)
+        '(@.*?(?=\\n|$))|' +
+        // 3. Palabras clave específicas (data, trace, ...)
+        '\\b(data|trace|end|play|stop)\\b|' +
+        // 4. Números (enteros y flotantes)
+        '\\b(\\d+(?:\\.\\d+)?)\\b|' +
+        // 5. Signos y operadores (+/*&^%$:<>?=) - Escapar caracteres especiales
+        '([\\+=/*-\\?<>&%\\$\\^|≔←→∈↩∧∨¬√∅∀∃⊂≠∑∏∞∄∂∫∪!∩Δ])|' +
+        // 5. Funciones (nombre pre-establecidos)
+        '\\b(true|false|Sin|Cos|OUTPUT|INPUT|LINE|TAB|Bool|Text|Number|Expresion|Inf|Nah|Null|Set|Reference|lim|eval)\\b|' + 
+        // 6. Espacios en blanco (para preservar formato)
+        '(\\s+)|' +
+        // 6. Otras palabras (Identificadores) - Coincide con el resto de "palabras"
+        '(\\b[a-zA-Z_]\\w*\\b)|', 
+        'g' // Bandera global para encontrar todas las coincidencias
+    );
 
-      const keywords  = ["data", "trace", "out", "in", "loop", "end", "block", "as", "CLS", "default?", "condition"];
-      const constants = ["LINE", "TAB", "ESP", "PI", "E"];
-      const ops       = ["->", "\\+", "-", "\\*", "/", "%", "\\^", "=", ">=", "<=", ">", "<", ":", "\\?", "not", "and", "or"];
+    let resultadoHTML = '';
+    let ultimoIndice = 0;
+    
+    // matchAll devuelve un iterador con todas las coincidencias
+    for (const match of texto.matchAll(regex)) {
+        const [token, strDoble, strSimple, comentario, palabraClave, numero, signo, functions, ignorar, otraPalabra] = match;
+        const inicio = match.index;
+        
+        // 1. Agregar el texto sin resaltar que estaba antes del token
+        // Esto maneja espacios, saltos de línea y texto que no coincide.
+        resultadoHTML += texto.substring(ultimoIndice, inicio);
 
-      function escapeHtml(s) {
-        return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-      }
+        let claseCSS = '';
 
-      function highlight(code) {
-  // Escapamos primero
-  let out = code
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;");
+        // 2. Determinar la clase CSS del token
+        if (strDoble) {
+            claseCSS = 'string';
+        } else if (strSimple) {
+            claseCSS = 'expresion';
+        } else if (comentario) {
+            claseCSS = 'comment';
+        } else if (palabraClave) {
+            claseCSS = 'keyword';
+        } else if (numero) {
+            claseCSS = 'number';
+        } else if (signo) {
+            claseCSS = 'operator';
+        } else if (otraPalabra) {
+            claseCSS = 'identifier';
+        } else if (functions){
+            claseCSS = 'function';
+        } else {
+            claseCSS = 'plain';
+        }
+        
+        // 3. Envolver el token en un span con la clase determinada
+        resultadoHTML += `<span class="${claseCSS}">${token}</span>`;
 
-  // Aplicamos resaltado sobre texto plano y escapado
-// Comentarios: buscar '@' ya escapado como '&#64;'
-    out = out.replace(/&#64;[^\n\r]*/g, m => `<span class="comment">${m}</span>`);
-  out = out.replace(/"([^"\\]|\\.)*"/g, m => `<span class="string">${m}</span>`);
-  out = out.replace(/\b\d+(\.\d+)?\b/g, m => `<span class="number">${m}</span>`);
+        // 4. Actualizar el índice para la próxima iteración
+        ultimoIndice = inicio + token.length;
+    }
 
-  [...keywords, ...constants].forEach(word => {
-    out = out.replace(new RegExp(`\\b${word}\\b`, "g"), m => `<span class="keyword">${m}</span>`);
-  });
+    // 5. Agregar el texto restante después del último token
+    resultadoHTML += texto.substring(ultimoIndice);
 
-  // Procesamos operadores con cuidado
-  ops.sort((a,b) => b.length - a.length).forEach(op => {
-    const pattern = new RegExp(`\\b${op}\\b`, "g"); // No coincide con <> porque ya están escapados
-    out = out.replace(pattern, m => `<span class="operator">${m}</span>`);
-  });
-
-  return out;
+    return resultadoHTML;
 }
 
-
-      function update() {
-        preview.innerHTML = highlight(textarea.value);
-      }
-
-      textarea.addEventListener("input", update);
-      update();
+document.addEventListener('DOMContentLoaded', () => {
+    const elementosCodigo = document.querySelectorAll('.heza-code');
+    elementosCodigo.forEach(elemento => {
+        const textoOriginal = elemento.textContent;
+        const textoResaltado = resaltarCodigo(textoOriginal);
+        elemento.innerHTML = textoResaltado;
     });
+});
