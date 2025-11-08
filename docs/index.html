@@ -14,6 +14,7 @@
       <a href="#documentacion">Documentacion</a>
       <a href="#instalacion">Instalacion</a>
       <a href="#examples">Ejemplos</a>
+      <a href="#asks">Preguntas</a>
     </nav>
 
     <div class="up">
@@ -39,6 +40,37 @@
     <section class="general">
       <h3 id="general">General</h3>
       <p>Heza es un lenguaje de programación diseñado para facilitar la realización de cálculos matemáticos complejos y la manipulación de datos numéricos. Su sintaxis intuitiva y sus potentes funciones integradas permiten a los usuarios centrarse en la lógica matemática sin preocuparse por los detalles de implementación.</p>
+    
+      <article>
+        <h4>A quien va dirigido</h4>
+        <p>Heza no es un software optimizado ni profesional por lo que no se recomienda su uso en industrias, está mas dirigido a estudiantes que cursan matematicas discretas o logica y principios de programacion paralelamente, funciona como un puente entre la notacion declarativa y la logica matematica y la programacion imperativa que se enseña en las universidades, en un punto medio (ej. Math > Heza > CPP/Java) puede reducir la curva de aprendizaje de los lenguajes de bajo nivel y ayudar a los estudiantes a ver la logica fuera de papel o como decimos: Las matematicas en acción.</p>
+      </article>
+
+      <article>
+        <h4>Arquitectura y tecnologias</h4>
+        <p>Este projecto esta hecho 100% en python, y se apoya de la libreria de SymPy para el calculo simbolico, todas las demas fucnionalidades estan programadas con las librerias estandares.
+          <br>
+        </p>
+        <p>
+          La arquitectura del interprete consta de 3 pasos (archivos) principales:
+        </p>
+          <ul>
+          <li>Lexer (analizador lexico)</li>
+          <li>Parser (analizador sintactico - constructor del AST)</li>
+          <li>Interpreter (Objeto que recorre el AST para ejecutar los comandos)</li>
+        </ul>
+
+        <p>
+          El Lexer funciona mediante la busqueda de expresiones regulares (Ragex) en el codigo Heza identificando patrones para construir una lista de tokens, en caso de leer un token ivalido (ej, \ ~) fuera de comillas simples o dobles lanza un error Lexico y detiene la ejecucion. El Lexer tambien es el encargado de ignorar los comentarios, espacios en blanco, tabulacion y saltos de linea.
+        </p>
+
+        <p>Un ejemplo de lo hace el lexer al leer el siguiente codigo:</p>
+        <div class="heza-code">data x = 5</div>
+        <p>Lee la palabra 'data' y la detecta como keyword, luego la letra x como un identificador, luego lee el operador de asignacion y de ultimo el numero 5 quedando asi:</p>
+        <div class="heza-code">[(KEYWORD, DATA), (IDENTIFIER, x), (ASIG, =), (NUMBER, 5)]</div>
+        <p>Esta lista de tokens verificados son los que usa el Parser para crear el AST (Arbol de sintaxis Abstracta). El Lexer solo detecta que los tokens sean validos y les asigna el nombre del patron para identificarlos</p>
+      </article>
+
     </section>
 
     <section class="documentacion">
@@ -204,7 +236,7 @@ OUTPUT ← "Hola Mundo"
 
       <article class="doc" id="converters">
         <h4>Conversion</h4>
-        <p>Se Emplea la notacion dato >> Tipo para la conversion</p>
+        <p>Se Emplea la notacion 'dato >> Tipo' para la conversion</p>
         <div class="heza-code">@Conversion
 
 data x = "123"
@@ -557,7 +589,7 @@ condicion: OUTPUT ← "x es mayor que y" : OUTPUT ← "x no es mayor que y"
   OUTPUT ← "x es mayor que y"
 :
   OUTPUT ← "x no es mayor que y"
-end:condicion
+end:&
 
 condicion::
   OUTPUT ← "x es mayor que y"
@@ -570,7 +602,7 @@ condicion::
   OUTPUT ← "x no es mayor que y"
 end:condicion
         </div>
-
+        <p>Cuando la condcion es un valor y no el nombre de la variable se coloca & despues de end:</p>
         <p>El operador : indica unica accion (como verdadero o como falso) y el operador :: indica bloque de codigo (requiere end), si las acciones de verdadero son varias pero las acciones de falso es una sola (:) el final del condicional no requiere end:condition_name</p>
       </article>
 
@@ -611,7 +643,7 @@ data x = 1
 &(x <= 5) play::
   OUTPUT ← x
   x = x + 1
-end:condicion    @Imprime los numeros del 1 al 5
+end:&    @Imprime los numeros del 1 al 5
 
 data y = 10
 data condicion2 = &(y < 5)
@@ -623,6 +655,8 @@ condicion2 play::
 end:condicion2    @Imprime "y no es menor que 5"
         </div>
       </article>
+
+      <p>Cuando la condicion es una expresion y no el nombre de la variable se coloca & despues de end:</p>
 
       <article class="doc">
         <h4>Stop</h4>
@@ -782,6 +816,8 @@ data resultado = &(x > 5) ? "x es mayor que 5" : "x no es mayor que 5"
 
     <section class="instalation">
       <h3 id="instalacion">Instalación</h3>
+
+      <p>Para utilizar Heza en tu computadora instala el <a href="https://github.com/bellosprojects/Heza/releases/download/Heza/HezaSetup.exe">Interprete de Heza</a> y descarga la <a href="https://marketplace.visualstudio.com/items?itemName=BellosProjects.hezaextension">Extension de VS Code</a> para el resaltado de sintaxis y los snippets, una vez instalados crea un archivo .hz y pulsa el boton <b>Heza Run</b> en el panel de vs code y ¡Listo! tu codigo Heza estará funcionando.</p>
     </section>
 
     <section class="examples">
@@ -850,7 +886,7 @@ data es_primo ≔ (num)::
     &(num % i = 0): ↩ false
     i = i + 1
 
-  end:condicion
+  end:&
 
   ↩ true
 
@@ -865,6 +901,29 @@ OUTPUT ← "Los numeros primos del 0 al 100 son: " + primos >> Text
 
     </section>
 
+    <section>
+
+      <h3 id="asks">Preguntas comunes</h3>
+
+      <article class="ask">
+        <h4>Existe una version para movil o interprete Web?</h4>
+        <p>Actualmente no existen un interprete web de Heza ni una version movil, y aunque se puede usar por linea de comandos lo mas recomendable es usar la extensionde vs code ya que los snippets ayudan con el tipeo de algunos simbolos dificiles de conseguir.</p>
+      </article>
+
+      <article class="ask">
+        <h4>Nulo es 0?</h4>
+        <p>El objeto Null esta programado para en contextos numericos funcionar como el 0, y en contextos de Conjuntos como un conjunto vacio, pero su funcion principal es representar la ausencia de un valor, por ejemplo si en una funcion numerica se retorna 0 seguramente es un resultado valido o incluso esperado, pero el valor nulo significa que no retorno nada y en ese sentido y otros mas nos dan informacion muy distinta.</p>
+      </article>
+
+      <article class="ask">
+        <h4>¿Los objetos Reference son Lambdas?</h4>
+        <p>La respuesta corta es no, en terminos de funcionalidad las lambdas (de otros lenguajes) son instrucciones en linea, es decir, cuando una funcion de orden superior requiere una funcion como parametro y no es necesario crear una funciona apodada se declara una funcion anonima con las instrucciones a ejecutar para que la funcion o metodo reciban el argumento, por otro lado los objetos Reference (de Heza) son una especie de apuntadores, solo que en vez de apuntar a la direecion de memoria de una variable apuntan a un nodo del AST, su funcion se basa en la evaluacion peresoza (lazy-evaluation) que consiste en no calcular el valor hasta que se pida, su funcionamiento pareciera ser una funcion pero en realidad es un valor ya que no realiza ningun procedimiento de control (declaracion, secuencias) y tampoco tiene parametros. <br> En resumen, una lambda es una funcion anomina y un objeto Reference es un valor que puede depender de variables del scope pero solo los utiliza cuando es necesario</p>
+      </article>
+
+      <p>Cualquier otra duda o consulta la puedes enviar al <a href="mailto:be">correo</a></p>
+
+    </section>
+
     <footer>
       <p>© Bello's Projects 2025 | <a href="https://github.com/bellosprojects/Heza">GitHub</a></p>
     </footer>
@@ -872,4 +931,3 @@ OUTPUT ← "Los numeros primos del 0 al 100 son: " + primos >> Text
     <script src="script.js"></script>
   </body>
 </html>
-
